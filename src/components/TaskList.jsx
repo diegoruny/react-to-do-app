@@ -38,7 +38,7 @@ import '../App.css';
 
 function TaskList({ tasks, deleteTask, toggleTaskCompletion, setTaskToEdit }) {
   return (
-    <ul className='tasks-grid'>
+    <ul className='flex flex-wrap justify-evenly p-4 gap-4' >
       {tasks.map((task) => (
         <Task 
           
