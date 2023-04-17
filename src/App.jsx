@@ -1,51 +1,8 @@
-// import { useState } from 'react'
-// import AddTodo from './components/AddTodo'
-// import TodoList from './components/TodoList'
-// import TodoItem from './components/TodoItem'
-
-// import './App.css'
-
-// function App() {
-//   const [alltoDos, setAlltoDos] = useState([])
-//   const addNewTodo = (newTodo) => {
-//     setAlltoDos([...alltoDos, newTodo])
-// }
-// const deleteItem = (elementindex) => {
-//   const newTodos = alltoDos.filter((toDos, i) => i !== elementindex);
-//   setAlltoDos(newTodos);
-// }
-// //Define toggleTask function to update a task's 
-// // completion status in the state
-// const completeToDo = (elementindex) => {
-
-//   const newTodos = [...alltoDos];
-//   newTodos[elementindex].completed = newTodos[elementindex].completed ? false : true;
-  
-//   setAlltoDos(newTodos);
-  
-
-// }
-
-//   return (
-//     <div className="App">
-//       <TodoList alltoDos={alltoDos} deleteItem={deleteItem} completeToDo={completeToDo} />
-//       <AddTodo addNewTodo={addNewTodo}/>
-//       <TodoItem key={alltoDos.id} todos={alltoDos}
-//         deleteTask = {deleteItem} toggleTaskCompletion={completeToDo} setTaskToEdit={''}
-//       />
-//     </div>
-//   )
-// }
-
-// export default App
-
-
-
 import React, { useState, useEffect } from 'react';
 import TaskList from './components/TaskList';
-import AddTask from './components/AddTask';
-import EditTask from './components/EditTask';
 import './App.css';
+import Modal from './components/Modal';
+import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
   const [tasks, setTasks] = useState(
@@ -72,7 +29,16 @@ function App() {
 
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
+    toast.error('Task deleted successfully');
   };
+
+  //Modal section
+  
+  const [modal, setModal] = useState(false);
+  const toogleModal = () => {
+    setModal(!modal);
+  }
+
 
   const toggleTaskCompletion = (id) => {
     setTasks(
@@ -82,20 +48,52 @@ function App() {
     );
   };
 
+  //Toast section
+  const notify = () => toast('Here is your toast.');
+
   return (
-    <div>
-      <h1 className='self'>To-do App</h1>
-      <AddTask addTask={addTask} />
-      {taskToEdit && (
-        <EditTask taskToEdit={taskToEdit} editTask={editTask} />
-      )}
+    <div className='flex flex-col items-center p-4 min-w-fit'>
+      <h1 className='text-5xl font-bold text-center mb-8 mt-8'>To-do App</h1>
+      <div className='divider'></div>
       <TaskList
         tasks={tasks}
         deleteTask={deleteTask}
         toggleTaskCompletion={toggleTaskCompletion}
         setTaskToEdit={setTaskToEdit}
+        toogleModal={toogleModal}
       />
+      {modal === true && 
+       <Modal
+        taskToEdit={taskToEdit}
+        toogleModal={toogleModal}
+        addTask={addTask}
+        editTask={editTask} 
+        setTaskToEdit={setTaskToEdit} 
+        />}
+        <div className='tooltip tooltip-left' data-tip="Add new task">
+          <button className='btn btn-primary rounded-full text-xl' onClick={toogleModal}>+</button>
+        </div>
+        
+        <div>
+          <Toaster
+          position="bottom-right"
+          reverseOrder={false}
+          toastOptions={{
+            // Define default options
+            success: {
+              style : {
+                background: 'hsl(var(--su))',
+              },
+              error: {
+                style: {
+                  background: 'red',
+                },
+              },
+        }}
+      }/>
+        </div>
     </div>
+    
   );
 }
 

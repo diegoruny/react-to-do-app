@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Task({ task, deleteTask, toggleTaskCompletion, setTaskToEdit }) {
+function Task({toogleModal, task, deleteTask, toggleTaskCompletion, setTaskToEdit }) {
   const capitalizeFirst = str => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
@@ -16,12 +16,18 @@ function Task({ task, deleteTask, toggleTaskCompletion, setTaskToEdit }) {
   
     return titleCase;
   }
+  const handleEdit = () => {
+    setTaskToEdit(task);
+    toogleModal();
+  }
   return (
-    <li className="card w-64 bg-neutral text-neutral-content">
+    <li className="card card-compact w-64 bg-neutral text-neutral-content">
       
-        <div className='card-body text-center'>
+        <div className='card-body text-center flex-shrink-0 shadow-2xl'>
           <div className='flex justify-end'>
+            {/* <label htmlFor="casualisimo">{`Status: ${task.completed}`}</label> */}
             <input
+            id='casualisimo'
             className='checkbox checkbox-sm checkbox-success'
             type="checkbox"
             checked={task.completed}
@@ -31,7 +37,7 @@ function Task({ task, deleteTask, toggleTaskCompletion, setTaskToEdit }) {
           <h2 className='card-title justify-center'>{toTitleCase(task.title)}</h2>
           <p >{capitalizeFirst(task.description)}</p>
             <div className='card-actions justify-around '>
-              <button className='btn btn-primary' onClick={() => setTaskToEdit(task)}>Edit</button>
+              <button className='btn btn-primary' onClick={handleEdit}>Edit</button>
               <button className="btn btn-secondary" onClick={() => deleteTask(task.id)}>Delete</button>
 
         </div>

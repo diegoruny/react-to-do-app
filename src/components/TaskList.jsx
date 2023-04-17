@@ -36,12 +36,12 @@ import Task from './Task';
 import '../App.css';
 
 
-function TaskList({ tasks, deleteTask, toggleTaskCompletion, setTaskToEdit }) {
+function TaskList({toogleModal, tasks, deleteTask, toggleTaskCompletion, setTaskToEdit }) {
   return (
     <ul className='flex flex-wrap justify-evenly p-4 gap-4' >
       {tasks.map((task) => (
         <Task 
-          
+          toogleModal={toogleModal}
           key={task.id}
           task={task}
           deleteTask={deleteTask}
