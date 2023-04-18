@@ -1,5 +1,5 @@
-import React, {  useState } from 'react';
-import { toast } from 'react-hot-toast';
+import React, { useState } from "react";
+import { toast } from "react-hot-toast";
 
 function EditTask({ taskToEdit, editTask, toogleModal }) {
   const [title, setTitle] = useState(taskToEdit.title);
@@ -10,36 +10,31 @@ function EditTask({ taskToEdit, editTask, toogleModal }) {
     if (!title) return;
     editTask({ ...taskToEdit, title, description });
     toogleModal();
-    toast.success('Task edited successfully');
+    toast.success("Task edited successfully");
   };
-  
+
   return (
-    < >
-      
-        <form className='form-control' onSubmit={handleSubmit}>
-          
-          <input
-            className='input input-bordered w-full max-w-xs'
-            type="text"
-            placeholder="Task title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-            <input
-              className='input input-bordered w-full max-w-xs'
-              type="text"
-              placeholder="Task description (optional)"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            <button className='btn btn-success' type="submit">Save</button>
-            
-            
-        </form>
-      
-      
+    <>
+      <form className="form-control" onSubmit={handleSubmit}>
+        <input
+          className="input-bordered input w-full max-w-xs"
+          type="text"
+          placeholder="Task title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <input
+          className="input-bordered input w-full max-w-xs"
+          type="text"
+          placeholder="Task description (optional)"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <button className="btn-success btn" type="submit">
+          Save
+        </button>
+      </form>
     </>
-    
   );
 }
 
