@@ -2,7 +2,10 @@
 
 This project is a work-in-progress To-Do application built with React.js. Users can add, mark as completed, and delete tasks. The app demonstrates the use of React hooks, such as `useState`, to manage state and create a functional, interactive user interface.
 
-**Note: This project is currently under development and may not be fully functional.**
+## Try Demo: 
+https://react-to-do-app-diegoruny.vercel.app/
+
+Note: This project is currently under development and may not be fully functional.
 
 ## Features (In Progress) 🌟
 
