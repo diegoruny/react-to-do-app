@@ -1,6 +1,6 @@
 import React from "react";
 import Task from "./Task";
-import "../App.css";
+
 
 function TaskList({
   toogleModal,

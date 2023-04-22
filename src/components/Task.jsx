@@ -34,7 +34,7 @@ function Task({
     >
       <div className="card-body flex-shrink-0 text-center shadow-2xl">
         <div className="flex justify-between">
-          {/* <label htmlFor="casualisimo">{`Status: ${task.completed}`}</label> */}
+          
           {task.completed ? (
             <span className="badge-success badge ">Completed</span>
           ) : (

@@ -15,7 +15,7 @@ function EditTask({ taskToEdit, editTask, toogleModal }) {
 
   return (
     <>
-      <form className="form-control" onSubmit={handleSubmit}>
+      <form className="form-control gap-2 p-4 items-center" onSubmit={handleSubmit}>
         <input
           className="input-bordered input w-full max-w-xs"
           type="text"
@@ -30,7 +30,7 @@ function EditTask({ taskToEdit, editTask, toogleModal }) {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <button className="btn-success btn" type="submit">
+        <button className="btn-success btn btn-wide" type="submit">
           Save
         </button>
       </form>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TaskList from "./components/TaskList";
-import "./App.css";
+
 import Modal from "./components/Modal";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -89,7 +89,7 @@ function App() {
               },
               error: {
                 style: {
-                  background: "hsl(var(--er))",
+                  background: 'hsl(var(--ac))',
                 },
               },
               warning: {
